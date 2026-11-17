@@ -1,0 +1,37 @@
+MARKETPULSE ID — PWA + DATA MIGRATION PACKAGE
+
+ISI PAKET
+- index.html
+- manifest.json
+- service-worker.js
+- icons/icon-192.png
+- icons/icon-512.png
+
+TAHAP A — CADANGKAN DATA DARI FILE LOKAL
+1. Jangan hapus file HTML lama dan jangan hapus data/cache Chrome.
+2. Buka versi HTML lokal yang memiliki panel "Cadangkan & Pindahkan Data MarketPulse" pada Pengaturan.
+3. Pastikan data lama tampil. Jika data tidak tampil, hentikan proses dan jangan menimpa/menghapus file lama; penyimpanan file content:// dapat terikat pada URI lokal yang berbeda.
+4. Buka Pengaturan Auto-Sync > Cadangkan & Pindahkan Data MarketPulse > Unduh Cadangan Data (.JSON).
+5. Simpan file JSON tersebut. File ini memuat data aplikasi, tetapi TIDAK memuat Gemini API Key.
+6. Sebelum berpindah, buka Pengaturan lama, pilih "Lihat" pada kolom API Key, lalu salin/simpan kunci secara pribadi. Jangan kirim atau bagikan kunci tersebut.
+
+TAHAP B — HOSTING
+1. Unggah SELURUH isi paket ke root hosting HTTPS (jangan hanya mengunggah index.html).
+2. Pastikan website dibuka melalui HTTPS, bukan file:// atau content://.
+3. Buka URL website di Chrome Android.
+4. Buka Pengaturan > Cadangkan & Pindahkan Data MarketPulse > Impor Cadangan Data, lalu pilih file JSON dari Tahap A.
+5. Setujui pemulihan dan tunggu aplikasi memuat ulang.
+6. Masukkan kembali Gemini API Key melalui Pengaturan Auto-Sync, lalu tekan Simpan.
+7. Setelah data dan fitur terverifikasi, barulah pertimbangkan menghapus salinan lama.
+
+TAHAP C — PINTASAN LAYAR UTAMA
+1. Di Chrome Android, buka URL HTTPS MarketPulse.
+2. Muat ulang halaman dan tunggu beberapa saat agar Service Worker terdaftar.
+3. Buka menu Chrome (⋮) > Instal aplikasi / Tambahkan ke layar utama.
+4. Tombol "Pasang Aplikasi" di header juga akan muncul jika Chrome memicu prompt instalasi.
+
+CATATAN PENTING
+- localStorage pada file lokal dan website HTTPS adalah penyimpanan berbeda; data tidak berpindah otomatis.
+- File cadangan tidak berisi Gemini API Key demi keamanan. API Key perlu dimasukkan kembali setelah migrasi.
+- Simpan file JSON secara pribadi karena berisi data aplikasi Anda. Jangan unggah ke tempat publik atau kirim ke orang lain.
+- Jangan menghapus file lama atau membersihkan data Chrome sebelum proses ekspor, impor, dan pemeriksaan berhasil.
